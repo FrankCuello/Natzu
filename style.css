@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Russo+One&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Russo One', sans-serif; /* Fuente más redondeada y moderna */
+    color: #fff;
+    overflow-x: hidden; /* Evita scroll horizontal por si los emojis se desbordan un poco */
+    display: flex; /* Para centrar el contenido principal si es necesario */
+    justify-content: center; /* Centra horizontalmente el main-content */
+    align-items: center; /* Centra verticalmente el main-content */
+}
+
+body {
+    background: linear-gradient(135deg, #ff00cc, #3333ff, #00ffcc, #ff3399, #9933ff);
+    background-size: 500% 500%; /* Más grande para que la animación sea más suave */
+    animation: gradientAnimation 15s ease infinite;
+    position: relative; /* Para posicionar los emojis */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.main-content {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente para legibilidad */
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3), 0 0 15px #ff00cc, 0 0 15px #3333ff;
+    z-index: 1; /* Asegura que el contenido esté sobre el fondo */
+    max-width: 80%;
+}
+
+header h1 {
+    font-family: 'Press Start 2P', cursive; /* Fuente pixelada para el título */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #ff00cc,
+        0 0 20px #ff00cc;
+}
+
+.motivational-quote p {
+    font-size: 1.5em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px #000;
+}
+
+#quote {
+    color: #f0f0f0; /* Un poco más claro para destacar */
+}
+
+footer p {
+    font-size: 1em;
+    color: #ccc;
+    margin-top: 20px;
+}
+
+.emoji-column {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 80px; /* Ancho de la columna de emojis */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Distribuye los emojis verticalmente */
+    align-items: center;
+    padding: 20px 0;
+    z-index: 0; /* Detrás del contenido principal si se superponen */
+}
+
+.emoji-column.left {
+    left: 10px; /* Espacio desde el borde izquierdo */
+}
+
+.emoji-column.right {
+    right: 10px; /* Espacio desde el borde derecho */
+}
+
+.emoji-column span {
+    font-size: 2.5em; /* Tamaño de los emojis */
+    opacity: 0.7;
+    animation: floatEmoji 5s ease-in-out infinite alternate;
+}
+
+/* Animación para que los emojis "floten" un poco */
+@keyframes floatEmoji {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Diferentes delays para la animación de cada emoji */
+.emoji-column span:nth-child(1) { animation-delay: 0s; }
+.emoji-column span:nth-child(2) { animation-delay: -1s; }
+.emoji-column span:nth-child(3) { animation-delay: -2s; }
+.emoji-column span:nth-child(4) { animation-delay: -3s; }
+.emoji-column span:nth-child(5) { animation-delay: -4s; }
+
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+    .motivational-quote p {
+        font-size: 1.2em;
+    }
+    .emoji-column {
+        width: 50px; /* Más pequeñas en móviles */
+    }
+    .emoji-column span {
+        font-size: 1.8em;
+    }
+    .main-content {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .emoji-column {
+        display: none; /* Ocultar emojis en pantallas muy pequeñas si molestan */
+    }
+    header h1 {
+        font-size: 1.5em;
+    }
+    .motivational-quote p {
+        font-size: 1em;
+    }
+     .main-content {
+        margin-top: 20px; /* Añadir margen si no hay emojis */
+        margin-bottom: 20px;
+    }
+}
